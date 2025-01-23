@@ -1,0 +1,15 @@
+{{/* Parameters */}}
+{{- $src := .Get "src" -}}
+
+{{/* HTML */}}
+{{ $data := (index site.Data $src) }}
+{{ with $data }}
+<ul class="hugx gallery {{ $src }}">
+    {{ range . -}}
+    <li>
+        <img src="{{ .imgSrc }}"/>
+        <div>{{ .title }}</div>
+    </li>
+    {{ end -}}
+</ul>
+{{ end }}
