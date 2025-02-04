@@ -1,4 +1,4 @@
-ul.hugx.gallery {
+.hugx.gallery {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -6,18 +6,22 @@ ul.hugx.gallery {
     margin-block: 0;
     padding-inline: 0;
     
-    >li {
+    .item {
         list-style: none;
         flex: 1 1 33%;
         position: relative;
-        >img {            
+        min-height: 50px;
+        min-width: 50px;
+
+        .background {
             height: 100%;
             width: 100%;
             object-fit: cover;
             margin: 0;
             padding: 0;
         }
-        >div {
+
+        .overlay {
             visibility: hidden;
             inset: 0;
             position: absolute; 
@@ -25,18 +29,22 @@ ul.hugx.gallery {
             width: 100%;
             height: 100%;
 
-            // overlay text
+            /* overlay text */
             display: flex;
             align-items: center;
             justify-content: center;
-            color: $color-title;
+            color: white;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
         }
+
         &:hover {
-          >div {
-            visibility: visible;
+            .overlay {
+                visibility: visible;
             }
-            >img {
-                filter: brightness(30%);
+            .background {
+                filter: brightness(25%);
             }
         }
     }
