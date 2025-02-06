@@ -7,16 +7,27 @@
 <ul class="hugx gallery {{ $src }}">
     {{ range . -}}
     <li class="item">
-        {{ with .url }}
-        <a href="{{ . }}">
+        {{ with .url }}<a href="{{ . }}">{{ end }}
+
+        {{ if .imgSrc }}
+
+        <img class="background" src="{{ .imgSrc }}"/>
+        <div class="overlay pictile">
+            <div class="title">{{ .title | markdownify }}</div>
+            <div class="subtitle">{{ .subtitle | markdownify }}</div>
+        </div>
+
+        {{ else }}
+
+        {{ $hue := math.Rand | mul 359 }}
+        <div class="background" style="background-color: hsl({{ $hue }} 60% 40%)"></div>
+        <div class="overlay textile">
+            <div class="title">{{ .title | markdownify }}</div>
+            <div class="subtitle">{{ .subtitle | markdownify }}</div>
+        </div>
         {{ end }}
-            <img class="background" src="{{ .imgSrc }}"/>
-            <div class="overlay">
-                {{ .title }}
-            </div>
-        {{ with .url }}
-        </a>
-        {{ end }}
+
+        {{ with .url }}</a>{{ end }}
     </li>
     {{ end -}}
 </ul>
