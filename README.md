@@ -11,7 +11,7 @@ Import the module from GitHub repository.
 # hugo.yaml
 module:
   imports:
-    - path: github.com/tnlx/hugx/gallery
+    - path: github.com/tnlx/hugx-gallery
 ```
 
 ## Usage
